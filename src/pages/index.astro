@@ -1,16 +1,11 @@
 ---
-
+import LayoutCommon from "../layouts/LayoutCommon.astro"
+import ProductTable from "../components/vue/ProductTable.vue"
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<LayoutCommon>
+	<div class="w-full mx-auto bg-white rounded-md shadow-md p-4" >
+		Em breve...
+		<!-- <ProductTable client:load/> -->
+	</div>
+</LayoutCommon>

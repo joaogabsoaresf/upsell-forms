@@ -1,0 +1,53 @@
+<script setup>
+import { computed, watch, onMounted } from 'vue';
+
+const props = defineProps({
+  modelValue: String,
+  options: Array,
+  defaultSelected: String,
+  inputLabel: String,
+});
+
+const emit = defineEmits(['update:modelValue', 'update:validity']);
+
+const value = computed({
+  get: () => props.modelValue,
+  set: (newValue) => emit('update:modelValue', newValue)
+});
+
+onMounted(() => {
+  if (!props.modelValue && props.defaultSelected) {
+    emit('update:modelValue', props.defaultSelected);
+  }
+});
+
+watch(value, (newVal) => {
+  emit('update:validity', newVal);
+});
+</script>
+
+<template>
+  <div class="pt-6">
+    <label class="block text-sm text-gray-500 pb-2">{{ inputLabel }}</label>
+    <div
+      v-for="option in options"
+      :key="option.value"
+      class="mb-[0.125rem] block min-h-[1.5rem] ps-[1.5rem]"
+    >
+      <input
+        :id="option.value"
+        :value="option.value"
+        type="radio"
+        class="relative float-left -ms-[1.5rem] me-1 mt-0.5 h-5 w-5 appearance-none rounded-full border-2 border-solid border-secondary-500 before:pointer-events-none before:absolute before:h-4 before:w-4 before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:shadow-checkbox before:shadow-transparent before:content-[''] after:absolute after:z-[1] after:block after:h-4 after:w-4 after:rounded-full after:content-[''] checked:border-primary checked:before:opacity-[0.16] checked:after:absolute checked:after:left-1/2 checked:after:top-1/2 checked:after:h-[0.625rem] checked:after:w-[0.625rem] checked:after:rounded-full checked:after:border-primary checked:after:bg-primary checked:after:content-[''] checked:after:[transform:translate(-50%,-50%)] hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-black/60 focus:shadow-none focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-black/60 focus:before:transition-[box-shadow_0.2s,transform_0.2s] checked:focus:border-primary checked:focus:before:scale-100 checked:focus:before:shadow-checkbox checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] rtl:float-right dark:border-neutral-400 dark:checked:border-primary"
+        v-model="value"
+        name="flexRadioDefault"
+      />
+      <label
+        :for="option.value"
+        class="mt-px inline-block ps-[0.15rem] hover:cursor-pointer"
+      >
+        {{ option.label }}
+      </label>
+    </div>
+  </div>
+</template>

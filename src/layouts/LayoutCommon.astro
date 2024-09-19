@@ -1,0 +1,28 @@
+---
+import pkg from '../../package.json' assert { type: 'json' };
+const SITE_TITLE = 'inChurch Forms'
+import Navbar from './Navbar.astro';
+---
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://cdn.jsdelivr.net/npm/cleave.js@1.6.0/dist/cleave.min.js"></script>
+		<title>{SITE_TITLE} — v{pkg.version}</title>
+	</head>
+    <body class="mb-4">
+        <Navbar/>
+        <div class="flex pt-8 px-16 bg-white">
+            <div
+                id="main-content"
+                class="relative w-full h-full bg-white ml-8 min-h-screen rounded-md"
+            >
+                <h2 class="text-lg font-bold text-white p-2 mb-2 bg-primary rounded-md w-full mx-auto">Formulário de Upsell</h2>
+                <slot />
+        </div>
+    
+    </body>
+</html>
+
+
