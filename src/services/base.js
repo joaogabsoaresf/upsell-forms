@@ -26,7 +26,7 @@ async function api_get(endpoint) {
 };
 
 async function api_post(endpoint, body) {
-    const url = `http://localhost:8000/api${endpoint}`;
+    const url = `https://operations-407517.rj.r.appspot.com/api${endpoint}`;
     const headers = {
         'Content-Type': 'application/json',
     }
