@@ -97,3 +97,13 @@ export async function createSetupItems(items) {
     }
     return response
 }
+
+export async function saveAirtable(data) {
+    const body = JSON.stringify(data)
+    try {
+        const data = await api_post('/upsell/save/', body);
+        return data
+    } catch (error) {
+        console.error('POST error:', error);
+    } finally {}
+}

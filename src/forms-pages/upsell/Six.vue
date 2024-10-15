@@ -4,6 +4,7 @@ import ProgressBar from '../../components/vue/ProgressBar.vue';
 import ResumeTable from '../../components/vue/ResumeTable.vue';
 import { createItems, createSetupItems } from '../../services/creation';
 import { accessRelease } from '../../services/church';
+import { saveAirtable } from '../../services/creation';
 
 const pageTitle = 'Resumo'
 
@@ -122,6 +123,8 @@ if (!items.hasSetup){
 for (let step in steps){
   steps[step].function()
 }
+
+saveAirtable(items)
 
 </script>
 
