@@ -19,11 +19,14 @@ const props = defineProps({
 const emit = defineEmits(['update:formData1']);
 
 function formatValue(value) {
+  if (!value){
+    return 0
+  }
   const formattedValue = value
-    .replace('R$', '')
-    .replace(/\./g, '')
-    .replace(',', '.')
-    .trim(); 
+  .replace('R$', '')
+  .replace(/\./g, '')
+  .replace(',', '.')
+  .trim(); 
   return parseFloat(formattedValue)
 }
 
@@ -54,41 +57,41 @@ const accessLoading = ref(true)
 
 async function callCreateSetup(){
   // setupLoading.value = false
-  // if (!items.hasSetup){
-  //   return
-  // }
-  // try {
-  //   const data = await createSetupItems(items)
-  //   return data
-  // } catch (error) {
-  //   console.error('POST error:', error);
-  // } finally {
-  //   setupLoading.value = false
-  // }
+  if (!items.hasSetup){
+    return
+  }
+  try {
+    const data = await createSetupItems(items)
+    return data
+  } catch (error) {
+    console.error('POST error:', error);
+  } finally {
+    setupLoading.value = false
+  }
 }
 
 async function callCreateItems(){
   // itensLoading.value = false
-  // try {
-  //   const data = await createItems(items)
-  //   return data
-  // } catch (error) {
-  //   console.error('POST error:', error);
-  // } finally {
-  //   itensLoading.value = false
-  // }
+  try {
+    const data = await createItems(items)
+    return data
+  } catch (error) {
+    console.error('POST error:', error);
+  } finally {
+    itensLoading.value = false
+  }
 }
 
 async function callAccessRelease(){
-  accessLoading.value = false
-  // try {
-  //   const data = await accessRelease(items)
-  //   return data
-  // } catch (error) {
-  //   console.error('POST error:', error);
-  // } finally {
-  //   accessLoading.value = false
-  // }
+  // accessLoading.value = false
+  try {
+    const data = await accessRelease(items)
+    return data
+  } catch (error) {
+    console.error('POST error:', error);
+  } finally {
+    accessLoading.value = false
+  }
 }
 
 const steps = {
