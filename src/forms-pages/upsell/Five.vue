@@ -25,6 +25,8 @@ const itemOptions = props.products.map(item => {
         options = moduleOptions.filter((option) => option.name != 'Sem módulo');
     } else if (item === 'videos') {
         options = videosOptions.filter((option) => option.name != 'Sem módulo');
+    } else if (item === 'cells' || item === 'events') {
+        options = moduleOptions.filter((option) => option.name != 'Sem módulo');
     }
     return {
         name: item,

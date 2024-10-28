@@ -60,6 +60,8 @@ export const productLabels = ref({
     journey:'Jornadas',
     kids:'Kids',
     videos:'Vídeos',
+    cells:'Gestão de Células',
+    events:'Gestão de Eventos'
 })
 
 export const productSuperlogicaIDs = {

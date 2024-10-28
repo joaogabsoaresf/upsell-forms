@@ -4,6 +4,8 @@ const productFunctionMap = {
     journey:getFeatureValue,
     kids:getFeatureValue,
     videos:getFeatureValue,
+    cells:getFeatureValue,
+    events:getFeatureValue,
 }
 
 export function getProductValue(membersRange, productType, productName, selectedOption) {
@@ -62,6 +64,12 @@ function getFeatureValue(membersRange, productType, productName, selectedOption)
         "up-15":149.9,
         "unlimited":399.9,
     }
+    const cells = {
+        "1-100":39.9,
+    }
+    const events = {
+        "1-100":19.9,
+    }
     if (productName === 'journey') {
         return journey[membersRange]
     }
@@ -70,5 +78,11 @@ function getFeatureValue(membersRange, productType, productName, selectedOption)
     }
     if (productName === 'videos') {
         return videos[selectedOption]
+    }
+    if (productName === 'cells') {
+        return cells[membersRange]
+    }
+    if (productName === 'events') {
+        return events[membersRange]
     }
 }
