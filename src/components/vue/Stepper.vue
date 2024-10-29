@@ -75,7 +75,7 @@ function jumpTo(page) {
         <CircleArrowRight :size="24" class="md:hidden"/>
         <p class="hidden md:flex" >Avançar</p>
       </button>
-
+<!-- 
       <button
         v-if="selectedIndex + 1 == rows" 
         id="next"
@@ -84,7 +84,7 @@ function jumpTo(page) {
       >
         <CircleCheckBig class="md:hidden":size="24"></CircleCheckBig>
         <h1 class="hidden md:flex">Finalizar</h1>
-      </button>
+      </button> -->
     </div>
   </div>
 </template>
