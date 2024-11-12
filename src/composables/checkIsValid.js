@@ -27,6 +27,8 @@ function page2Validation(formData){
 }
 
 function page3Validation(formData){
+    console.log('ta aqui')
+    console.log(formData)
     if (formData.page3.hasSetup === undefined){
         return false
     }
@@ -36,7 +38,8 @@ function page3Validation(formData){
     if (!formData.page3.setupValue || !formData.page3.setupValue.includes(',')) {
         return false
     }
-    if (formData.page3.hasDownPayment) {
+    const boolHasDownpayment = formData.page3.hasDownPayment === 'true'
+    if (boolHasDownpayment) {
         if (!formData.page3.downPaymentValue || !formData.page3.downPaymentValue.includes(',')){
             return false
         }
