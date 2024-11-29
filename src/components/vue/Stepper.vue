@@ -28,6 +28,10 @@ function jumpTo(page) {
   selectedIndex.value = page;
 }
 
+function reset(){
+  window.location.reload()
+}
+
 </script>
 
 <template>
@@ -57,7 +61,7 @@ function jumpTo(page) {
 
     <div class="grid grid-cols-10 gap-4 mt-8">
       <button
-        v-if="selectedIndex > 0"
+        v-if="selectedIndex > 0 && selectedIndex < rows - 1"
         id="back"
         class="col-start-9 col-end-10 px-2 py-2.5 flex items-center justify-center leading-5 text-white transition-colors transform bg-gray-500 rounded-md hover:bg-secondary focus:outline-none focus:bg-secondary"
         @click="jumpTo(selectedIndex - 1)"
@@ -75,16 +79,16 @@ function jumpTo(page) {
         <CircleArrowRight :size="24" class="md:hidden"/>
         <p class="hidden md:flex" >Avançar</p>
       </button>
-<!-- 
+      
       <button
         v-if="selectedIndex + 1 == rows" 
         id="next"
-        class="col-end-11 col-span-1 px-2 py-2.5 flex items-center justify-center leading-5 text-white transition-colors transform bg-primary rounded-md hover:bg-secondary focus:outline-none focus:bg-secondary"
-        @click="jumpTo(selectedIndex + 1)"
-      >
+        class="col-span-10 px-2 py-2.5 flex items-center justify-center leading-5 text-white transition-colors transform bg-gray-500 rounded-md hover:bg-secondary focus:outline-none focus:bg-secondary"
+        @click="reset()"
+        >
         <CircleCheckBig class="md:hidden":size="24"></CircleCheckBig>
-        <h1 class="hidden md:flex">Finalizar</h1>
-      </button> -->
+        <h1 class="hidden md:flex">Reiniciar</h1>
+      </button>
     </div>
   </div>
 </template>
